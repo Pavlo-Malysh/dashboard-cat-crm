@@ -1,11 +1,11 @@
 {
-  "name": "starter-kit",
+  "name": "dashboard-cat-crm",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/starter-kit/",
+    "build": "vite build --base=/dashboard-cat-crm/",
     "preview": "vite preview",
     "watch": "npx vite build --watch"
   },
