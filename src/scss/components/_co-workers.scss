@@ -2,6 +2,8 @@
     grid-area: co-workers;
 }
 
+
+
 .co-workers-wrapper {}
 
 .co-workers-title {}
@@ -76,4 +78,9 @@
 
 .hide {}
 
-.show-more-btn {}
+
+
+.co-workers-btn {
+    display: block;
+    margin: 0 auto;
+}

@@ -1,0 +1,24 @@
+@if index($btn-types, info) {
+    /* Info */
+
+    .btn--info {
+        background-color: #4e75ff;
+
+        &:active {
+            background-color: darken($color: #4e75ff, $amount: 10%);
+        }
+
+        @media(hover: hover) {
+
+            &:hover,
+            &:focus {
+                background-color: lighten($color: #4e75ff, $amount: 10%);
+            }
+
+        }
+
+        &[disabled] {
+            background-color: #b5b5be;
+        }
+    }
+}

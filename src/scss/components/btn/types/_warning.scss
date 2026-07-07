@@ -1,0 +1,25 @@
+@if index($btn-types, warning) {
+    /* Warning */
+
+    .btn--warning {
+        background-color: #a461d8;
+
+        &:active {
+            background-color: darken($color: #a461d8, $amount: 10%);
+        }
+
+        @media(hover: hover) {
+
+            &:hover,
+            &:focus {
+                background-color: lighten($color: #a461d8, $amount: 10%);
+            }
+
+
+        }
+
+        &[disabled] {
+            background-color: #b5b5be;
+        }
+    }
+}
