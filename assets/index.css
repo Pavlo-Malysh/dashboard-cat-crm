@@ -159,7 +159,7 @@ body {
   letter-spacing: 0.03em;
 }
 
-.menu-btn, .menu-link {
+.search-input, .menu-btn, .menu-link {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.43;
@@ -447,6 +447,56 @@ summary {
 .notification.is-notify {
   opacity: 1;
 }
+
+.notification-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  min-height: 20px;
+}
+.notification-btn-icon {
+  fill: currentColor;
+}
+.notification-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: #F07F2E;
+  border-radius: 50%;
+}
+.notification-btn[data-notify=true]::after {
+  background-color: #FC5A5A;
+}
+
+.search-field {
+  transition: 300ms ease;
+  transition-property: width, color;
+  display: inline-flex;
+  align-items: center;
+  color: #92929D;
+  overflow: hidden;
+}
+.search-field:focus-within {
+  color: #FAFAFB;
+}
+
+.search-icon {
+  flex-shrink: 0;
+  fill: currentColor;
+  margin-right: 12px;
+}
+
+.search-input {
+  min-width: 165px;
+  min-height: 20px;
+}
+
 @media only screen and (min-width: 768px) {
   .main {
     gap: 36px;
@@ -455,6 +505,7 @@ summary {
     grid-template-areas: "welcome welcome" "co-workers co-workers" "tasks reports";
   }
 }
+
 @media only screen and (min-width: 1200px) {
   .header {
     grid-area: header;
@@ -481,7 +532,11 @@ summary {
   .menu-btn {
     display: none;
   }
+  .search-field {
+    margin-right: auto;
+  }
 }
+
 @media only screen and (max-width: 1199.98px) {
   .sidebar {
     position: fixed;
@@ -510,7 +565,22 @@ summary {
     transform: translateX(0);
     transition-delay: 300ms;
   }
+  .search-field {
+    width: 30px;
+  }
+  .search-field:focus-within {
+    width: 200px;
+  }
+  .search-input {
+    transition: 300ms ease;
+    transition-property: opacity;
+    opacity: 0;
+  }
+  .search-input:focus {
+    opacity: 1;
+  }
 }
+
 @media (hover: hover) {
   .btn--primary:hover, .btn--primary:focus {
     box-shadow: 0 4px 10px 0 rgba(240, 127, 46, 0.25);
