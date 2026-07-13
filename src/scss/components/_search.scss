@@ -49,6 +49,7 @@
 
         &:focus {
             opacity: 1;
+            transition-delay: 400ms;
         }
     }
 }

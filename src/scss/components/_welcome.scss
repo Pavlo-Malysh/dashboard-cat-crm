@@ -1,14 +1,33 @@
+@use "../utils/variables" as var;
+@use "../utils/functions" as fn;
+@use "../utils/placeholders";
+@use "../utils/mixins" as mx;
+
 @use "./btn/btn" as btn with ($btn-layer-spacing: 4px,
+
 );
 
 .welcome {
     grid-area: welcome;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    row-gap: 16px;
 }
 
-.page-title {}
+.page-title {
+    &-accent {
+        @extend %section-title;
 
-.page-title-accent {}
+        display: block;
+        margin-bottom: 8px;
 
-.welcome-btn {}
+        color: fn.get-color("light-primary");
 
-.welcome-btn-icon {}
+        @include mx.media-query("lg") {
+            margin-bottom: 16px;
+        }
+    }
+}
