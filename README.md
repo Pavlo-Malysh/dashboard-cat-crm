@@ -1,117 +1,118 @@
-# Simple starter template for Sass
+# Dashboard Cat CRM
 
-![screenshot](./demo/main-page.jpg)
+Статичний UI-макет адмін-панелі (dashboard) у стилі CRM-системи. Проєкт демонструє верстку інтерфейсу для управління командою та задачами: бічне меню навігації, картки/таблицю співробітників, список задач і блок звітів із прогрес-барами.
 
-## Vanilla App Template
+## Основний функціонал
 
-Цей проект було створено за допомогою Vite. Для знайомства та налаштування
-додаткових можливостей [звернись до документації](https://vitejs.dev/).
+- **Бічне меню (Sidebar)** — навігація з іконками, адаптивне відкриття/закриття на мобільних пристроях (з блокуванням скролу сторінки).
+- **Header** — пошук, кнопка сповіщень, лічильник непрочитаних сповіщень.
+- **Welcome** — привітальний блок на головному екрані.
+- **Co-workers** — список/таблиця співробітників з аватарами, посадами, статусами (бейджі danger/warning/success) та деталями по кожному.
+- **Tasks (Board)** — дошка задач із тегами та деталями.
+- **Reports** — блок звітності з прогрес-барами по статусах.
 
-Ключові особливості цього шаблону:
+Уся взаємодія — клієнтська (vanilla JS), без звернень до API чи серверної логіки.
 
-**Build Tools:** Vite.js
-**Plugins:** Autoprefixer, PostCSS Sort Media Queries
-**Styles:** SCSS
-**Reset:** \_reset.scss (Based on The New Reset CSS)
+## Технологічний стек
 
-## Створення репозиторію за шаблоном
+| Категорія | Інструменти |
+|---|---|
+| Збірка | [Vite](https://vitejs.dev/) 4 |
+| Стилі | Sass/SCSS, PostCSS (`postcss-sort-media-queries`, `@fullhuman/postcss-purgecss`, `autoprefixer`) |
+| JavaScript | Vanilla JS (ES-модулі) |
+| Анімації/UX | `animejs`, `body-scroll-lock` |
+| Оптимізація зображень | `vite-plugin-image-optimizer`, `imagemin`, `imagemin-webp`, `sharp`, `svgo` |
+| CI/CD | GitHub Actions → деплой на GitHub Pages (`.github/workflows/deploy.yml`) |
+| Форматування | Prettier (`.prettierrc.json`) |
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проекту. Для цього натисни на кнопку `«Use this template»` і
-обери опцію `«Create a new repository»`, як показано на зображенні.
+## Структура проєкту
 
-![Creating repo from a template step 1](./demo/template-step-1.png)
-
-На наступному етапі відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся, що репозиторій публічний, після чого натисни
-кнопку `«Create repository from template»`.
-
-![Creating repo from a template step 2](./demo/template-step-2.png)
-
-Після того, як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
-
-![Settings GitHub Actions permissions step 1](./demo/gh-actions-perm-1.png)
-
-Проскроливши сторінку до самого кінця, в секції `«Workflow permissions»` обери
-опцію `«Read and write permissions»` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проекту.
-
-![Settings GitHub Actions permissions step 2](./demo/gh-actions-perm-2.png)
-
-Тепер у тебе є особистий репозиторій проекту, зі структурою файлів та папок
-репозиторію-шаблону. Далі працюй з ним, як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби коміти та відправляй
-їх на GitHub!
-
-## Підготовка до роботи
-
-1. Переконайся, що на комп'ютері встановлено LTS-версію Node.js.
-   [Скачай та встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови базові залежності проекту в терміналі командою `npm install`.
-3. Запусти режим розробки, виконавши в терміналі команду `npm run dev`.
-4. Перейдіть у браузері за адресою
-   [http://localhost:5173](http://localhost:5173). Ця сторінка буде автоматично
-   перезавантажуватись після збереження змін у файли проекту.
-5. Для перегляду результуючого СSS файлу виконай команду
-   `npx vite build --watch` та перейди в папку `dist/assets`
-
-## Структура проекту. Файли і папки
-
-This is the structure of the project:
-
-```plaintext
-/
-├── demo                    # Папка для файлів цієї інструкції
-├── dist                    # Результуючий код
-├── node_modules            # Node.js залежності для проекту
-├── public                  # Файли для публічного доступу та використання
-├── src                     # Вихідний код
-│   ├── fonts	            # Папка для ваших шрифтів
-│   ├── img                 # Папка для ваших зображень
-│   ├── js                  # Файли Javascript вашого проекту
-│   ├── scss                # Стилі SCSS для вашого проекту
-├── .gitignore              # Перелік файлів та папок, які ігнорує Git
-├── index.html              # Файл HTML для вашого проекту
-├── LICENSE                 # Файл ліцензії для вашого проекту
-├── package-lock.json       # Файл з поточними версіями залежностей для вашого проекту
-├── package.json            # Визначає метадані вашого проекту і його залежності
-├── postcss.config.cjs      # Конфігурація для PostCSS
-├── README.md               # Цей файл 😎
-├── vite.config.js          # Конфігурація бандлера Vite
+```
+dashboard-cat-crm/
+├── public/              # Статичні файли публічного доступу
+├── src/
+│   ├── fonts/            # Шрифти (Montserrat, woff/woff2)
+│   ├── img/               # Зображення, іконки (icons.svg), webp-версії
+│   ├── js/
+│   │   └── main.js        # Точка входу: імпорт стилів, логіка sidebar-меню
+│   └── scss/               # Стилі проєкту (детально нижче)
+├── dist/                  # Згенерована продакшн-збірка (npm run build)
+├── index.html              # Розмітка сторінки (UI kit / дашборд)
+├── vite.config.js          # Конфігурація Vite (оптимізація зображень, PurgeCSS, entry points)
+├── postcss.config.cjs       # Конфігурація PostCSS
+└── .github/workflows/       # CI: автодеплой на GitHub Pages
 ```
 
-## Подальші кроки
+## Стилізація через Sass/SCSS
 
-Після клонування шаблону обов’язково очистіть і оновіть наступні файли/папки:
+Стилі організовані за принципом **7-1 (спрощений варіант)** — розділення на шари `utils → base → layout → components`, які підключаються через єдину точку входу `src/scss/main.scss`:
 
-1. Очистіть файл README.md.
-2. Адаптуйте файл LICENSE до свого проекту.
-3. Очистіть `public/sass.svg`, папки `demo/`, `src/img/**/*`, `src/fonts/**/*`, а також `src/scss/**.*`, окрім файлів `style.scss` та `_reset.scss`.
-4. Видаліть вміст із файлу `src/scss/style.scss`, окрім `@use "reset.scss";`.
-5. У файлі `src/js/main.js`, залиште лише цей рядок з імпортом: `import '../scss/style.scss';`.
+```scss
+@use "base";
+@use "layout";
+@use "components";
+```
+
+### Структура шарів
+
+```
+scss/
+├── utils/
+│   ├── _variables.scss     # SCSS-мапи: кольори, брейкпоінти, відступи, шрифти, easing
+│   ├── _functions.scss     # Функції (наприклад get-color() — вибірка кольору з мапи)
+│   ├── _mixins.scss        # Міксини (media-query, frame, scroll-bar, ease)
+│   └── _placeholders.scss  # %-плейсхолдери для @extend (типографіка, секції)
+├── base/                   # Reset, базові стилі, шрифти, службові класи
+├── layout/                 # Header, Sidebar, Main, Page — глобальна структура сторінки
+└── components/              # Ізольовані компоненти (кнопки, бейджі, меню, задачі, звіти тощо)
+```
+
+### Ключові підходи
+
+- **Змінні через SCSS-мапи.** Кольори, брейкпоінти, шрифти, відступи й easing-криві зберігаються не як окремі `$змінні`, а як мапи (`$colors`, `$breakpoints`, `$font-sizes` і т.д.) у `utils/_variables.scss`, що дозволяє звертатись до них через `map.get()`.
+- **Функції.** `utils/_functions.scss` містить `get-color($key)` — обгортку над `map.get($colors, $key)` для зручного виклику кольору за назвою (`fn.get-color("accent-primary")`).
+- **Міксини.** `utils/_mixins.scss`:
+  - `media-query($bp, $type, $is-retina)` — адаптивні брейкпоінти (`min`/`max`-width, retina-медіазапити) на основі мапи `$breakpoints`;
+  - `frame($width, $height, $is-circle)` — розміри та обрізка зображень/аватарів (у т.ч. кругла форма);
+  - `scroll-bar()` — кастомізація скролбару (`::-webkit-scrollbar`);
+  - `ease($ease, $properties...)` — уніфіковані transition на основі мапи `$easings`.
+- **Плейсхолдери (`%...`) і `@extend`.** `utils/_placeholders.scss` визначає типографічні шаблони (`%main-title`, `%section-title`, `%main-text`, `%details` тощо) та `%section-frame` — вони перевикористовуються в компонентах через `@extend` замість дублювання CSS-властивостей.
+- **Партіали та вкладеність папок.** Кожен компонент — окремий партіал (`_badges.scss`, `_menu.scss`, `_reports.scss`, `_tasks.scss`, `_welcome.scss` тощо), а складніші компоненти виділені у вкладені підпапки з власним `index.scss`, що імпортує внутрішні частини:
+  - `components/btn/` — базові стилі кнопки (`_btn-base.scss`, `_btn.scss`) + `types/` з варіантами (`_primary`, `_secondary`, `_danger`, `_warning`, `_success`, `_info`, `_default`, `_frame`);
+  - `components/coworkers/` — `_board.scss`, `_co-workers.scss`, `_details.scss`, `_table.scss`, зібрані через `index.scss`.
+- **Модульний Sass (`@use`/`@forward`).** Проєкт використовує сучасний модульний синтаксис Sass (`@use ... as`) замість застарілого `@import`, що ізолює простір імен між файлами (`fn.get-color(...)`, `mx.media-query(...)`, `var.$colors`).
+- **Вкладеність селекторів.** У компонентах активно використовується вкладена нотація SCSS (наприклад `&::-webkit-scrollbar-thumb`, `&:hover`) для читабельного опису станів і псевдоелементів у межах одного блоку.
+
+## Як запустити проєкт локально
+
+1. Встановити Node.js (LTS).
+2. Встановити залежності:
+   ```bash
+   npm install
+   ```
+3. Запустити режим розробки (Vite dev-сервер із hot reload):
+   ```bash
+   npm run dev
+   ```
+   Проєкт буде доступний на [http://localhost:5173](http://localhost:5173).
+4. Зібрати продакшн-версію:
+   ```bash
+   npm run build
+   ```
+   Результат — у папці `dist/`.
+5. Локально переглянути продакшн-збірку:
+   ```bash
+   npm run preview
+   ```
+6. Збірка в режимі спостереження за змінами (наприклад, для перевірки згенерованого CSS у `dist/assets`):
+   ```bash
+   npm run watch
+   ```
 
 ## Деплой
 
-Продакшн версія проекту буде автоматично збиратися та деплоїтись на GitHub
-Pages, у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад,
-після прямого пуша або прийнятого пул-реквесту. Для цього необхідно у файлі
-`package.json` змінити значення прапора `--base=/<REPO>/`, для команди `build`,
-замінивши `<REPO>` на назву свого репозиторію, та відправити зміни на GitHub.
+При пуші в гілку `main` GitHub Actions (`.github/workflows/deploy.yml`) автоматично збирає проєкт (`npm run build`) і публікує вміст `dist/` у гілку `gh-pages` для GitHub Pages.
 
-```json
-"build": "vite build --base=/<REPO>/",
-```
+## Ліцензія
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) та
-виставити роздачу продакшн версії файлів з папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
-
-![GitHub Pages settings](./demo/repo-settings.png)
-
-## License
-
-Цей шаблон створено під [MIT License](LICENSE).
-
-**Thank you and happy coding!** 💻
+[MIT](LICENSE)
