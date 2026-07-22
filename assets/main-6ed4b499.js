@@ -271,6 +271,9 @@ window.matchMedia("(min-width: 1200px)").addEventListener("change", (event) => {
 });
 const currentPath = location.pathname.replace(/\/$/, "") || "/index.html";
 refsMenu.menuLinks.forEach((link) => {
-  const linkPath = new URL(link.getAttribute("href"), location.origin).pathname;
+  const href = link.getAttribute("href");
+  if (href === "#")
+    return;
+  const linkPath = new URL(href, location.href).pathname;
   link.classList.toggle("current", linkPath === currentPath);
 });
