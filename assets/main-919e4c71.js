@@ -250,7 +250,8 @@ const bodyScrollLock = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defi
 const refsMenu = {
   openMenuBtn: document.querySelector(".js-menu-open"),
   closeMenuBtn: document.querySelector(".js-menu-close"),
-  overlayMenu: document.querySelector(".js-menu")
+  overlayMenu: document.querySelector(".js-menu"),
+  menuLinks: document.querySelectorAll(".menu-link")
 };
 const toggleMenu = () => {
   const isMenuOpen = refsMenu.openMenuBtn.getAttribute("aria-expanded") === "true" || false;
@@ -267,4 +268,9 @@ window.matchMedia("(min-width: 1200px)").addEventListener("change", (event) => {
   refsMenu.overlayMenu.classList.remove("is-open");
   refsMenu.openMenuBtn.setAttribute("aria-expanded", false);
   enableBodyScroll(document.body);
+});
+const currentPath = location.pathname.replace(/\/$/, "") || "/index.html";
+refsMenu.menuLinks.forEach((link) => {
+  const linkPath = new URL(link.getAttribute("href"), location.origin).pathname;
+  link.classList.toggle("current", linkPath === currentPath);
 });
