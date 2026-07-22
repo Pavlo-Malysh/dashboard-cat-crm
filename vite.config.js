@@ -6,6 +6,8 @@ import glob from "fast-glob";
 import { fileURLToPath } from "url";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import purgecss from "@fullhuman/postcss-purgecss";
+import injectHTML from "vite-plugin-html-inject";
+import FullReload from "vite-plugin-full-reload";
 
 export default defineConfig({
   plugins: [
@@ -30,6 +32,8 @@ export default defineConfig({
     purgecss({
       content: ["./**/*.html"],
     }),
+    injectHTML(),
+    FullReload(["./src/partials/**/*.html", "./*.html", "./pages/**/*.html"]),
   ],
   build: {
     minify: false, // disable minification

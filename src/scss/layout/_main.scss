@@ -3,11 +3,18 @@
 @use "../utils/placeholders";
 @use "../utils/mixins" as mx;
 
-
 .main {
+    padding: 16px;
+
+    @include mx.media-query("md") {
+        padding: 36px;
+    }
+}
+
+.main-dashboard {
     display: grid;
     gap: 40px;
-    padding: 16px;
+
     grid-template-areas:
         "welcome"
         "co-workers"
@@ -16,8 +23,6 @@
 
     @include mx.media-query("md") {
         gap: 36px;
-        padding: 36px;
-
         grid-template-columns: repeat(2, 1fr);
         grid-template-areas:
             "welcome welcome"
@@ -37,5 +42,36 @@
             "welcome welcome"
             "co-workers tasks"
             "co-workers reports";
+    }
+}
+
+
+.main-companies {
+    display: grid;
+    gap: 40px;
+    grid-template-areas:
+        "welcome"
+        "companies-list"
+    ;
+
+    @include mx.media-query("md") {
+        gap: 36px 20px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            "welcome welcome"
+            "companies-list companies-list";
+    }
+
+
+
+    @include mx.media-query("lg") {
+        //Position in page layout
+        grid-area: main;
+
+        //Inside grid system
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+            "welcome welcome welcome"
+            "companies-list companies-list companies-list";
     }
 }

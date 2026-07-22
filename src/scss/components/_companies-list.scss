@@ -1,0 +1,65 @@
+@use "../utils/variables" as var;
+@use "../utils/functions" as fn;
+@use "../utils/placeholders";
+@use "../utils/mixins" as mx;
+
+.companies {
+    grid-area: companies-list;
+}
+
+.companies-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    @include mx.media-query("md") {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    @include mx.media-query("lg") {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+.companies-item {
+    @extend %card-frame;
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: space-between;
+
+    background-color: fn.get-color("dark-tetriary");
+}
+
+.companies-item-caption {
+    @extend %accent-text;
+    color: fn.get-color("light-primary");
+
+    margin-bottom: 18px;
+}
+
+.companies-item-address {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin-bottom: 32px;
+}
+
+.companies-map-icon {
+    fill: #82c43c;
+}
+
+.companies-item-details {
+    @extend %main-text;
+}
+
+
+.companies-item-icon {
+    width: 52px;
+    height: 52px;
+    fill: #fff;
+}

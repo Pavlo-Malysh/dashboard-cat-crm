@@ -3,10 +3,12 @@
 
     .btn--frame {
         border-color: #f07f2e;
+        color: #f07f2e;
 
 
         &:active {
             background-color: #d14a00;
+            color: #ffff;
         }
 
         @media(hover: hover) {
@@ -14,6 +16,7 @@
             &:hover,
             &:focus {
                 border-color: #f15c27;
+                color: #f15c27;
             }
         }
 
