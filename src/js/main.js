@@ -8,6 +8,7 @@ const refsMenu = {
   openMenuBtn: document.querySelector('.js-menu-open'),
   closeMenuBtn: document.querySelector('.js-menu-close'),
   overlayMenu: document.querySelector('.js-menu'),
+  menuLinks: document.querySelectorAll('.menu-link')
 };
 
 const toggleMenu = () => {
@@ -32,4 +33,14 @@ window.matchMedia('(min-width: 1200px)').addEventListener('change', event => {
   refsMenu.overlayMenu.classList.remove('is-open');
   refsMenu.openMenuBtn.setAttribute('aria-expanded', false);
   bodyScrollLock.enableBodyScroll(document.body);
+});
+
+
+
+const currentPath = location.pathname.replace(/\/$/, '') || '/index.html';
+
+refsMenu.menuLinks.forEach(link => {
+  const linkPath = new URL(link.getAttribute('href'), location.origin).pathname;
+
+  link.classList.toggle('current', linkPath === currentPath);
 });
