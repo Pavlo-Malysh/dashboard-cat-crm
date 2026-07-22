@@ -159,14 +159,14 @@ meter {
   letter-spacing: 0.03em;
 }
 
-body {
+.companies-item-details, body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.03em;
 }
 
-.reports-title span, .board-caption, .co-workers-table caption span, .co-workers-title span, .tasks-title span {
+.companies-item-caption, .reports-title span, .board-caption, .co-workers-table caption span, .co-workers-title span, .tasks-title span {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
@@ -190,6 +190,11 @@ body {
 .reports, .board-item, .tasks {
   padding: 16px;
   border-radius: 12px;
+}
+
+.companies-item {
+  padding: 24px;
+  border-radius: 24px;
 }
 
 body {
@@ -230,10 +235,19 @@ summary {
 }
 
 .main {
+  padding: 16px;
+}
+
+.main-dashboard {
   display: grid;
   gap: 40px;
-  padding: 16px;
   grid-template-areas: "welcome" "co-workers" "tasks" "reports";
+}
+
+.main-companies {
+  display: grid;
+  gap: 40px;
+  grid-template-areas: "welcome" "companies-list";
 }
 
 .page {
@@ -316,9 +330,11 @@ summary {
 /* Frame */
 .btn--frame {
   border-color: #f07f2e;
+  color: #f07f2e;
 }
 .btn--frame:active {
   background-color: #d14a00;
+  color: white;
 }
 .btn--frame[disabled] {
   background-color: rgba(181, 181, 190, 0.5);
@@ -1047,18 +1063,67 @@ summary {
   background-color: #82C43C;
 }
 
+.companies {
+  grid-area: companies-list;
+}
+
+.companies-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.companies-item {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  background-color: #292932;
+}
+
+.companies-item-caption {
+  color: #FAFAFB;
+  margin-bottom: 18px;
+}
+
+.companies-item-address {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.companies-map-icon {
+  fill: #82c43c;
+}
+
+.companies-item-icon {
+  width: 52px;
+  height: 52px;
+  fill: #fff;
+}
+
 @media only screen and (min-width: 768px) {
   .main {
-    gap: 36px;
     padding: 36px;
+  }
+  .main-dashboard {
+    gap: 36px;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: "welcome welcome" "co-workers co-workers" "tasks reports";
+  }
+  .main-companies {
+    gap: 36px 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "welcome welcome" "companies-list companies-list";
   }
   .co-workers-details {
     display: none;
   }
   .reports-item {
     gap: 32px;
+  }
+  .companies-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1071,10 +1136,15 @@ summary {
     padding: 24px 36px;
     justify-content: space-between;
   }
-  .main {
+  .main-dashboard {
     grid-area: main;
     grid-template-columns: repeat(auto-fit, minmax(455px, 629px));
     grid-template-areas: "welcome welcome" "co-workers tasks" "co-workers reports";
+  }
+  .main-companies {
+    grid-area: main;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "welcome welcome welcome" "companies-list companies-list companies-list";
   }
   .sidebar {
     grid-area: sidebar;
@@ -1102,6 +1172,9 @@ summary {
   }
   .search-field {
     margin-right: auto;
+  }
+  .companies-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -1201,6 +1274,7 @@ summary {
   }
   .btn--frame:hover, .btn--frame:focus {
     border-color: #f15c27;
+    color: #f15c27;
   }
   .btn--info:hover, .btn--info:focus {
     background-color: #819dff;
