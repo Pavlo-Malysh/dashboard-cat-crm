@@ -37,7 +37,9 @@ window.matchMedia('(min-width: 1200px)').addEventListener('change', event => {
 
 
 
-const currentPath = location.pathname.replace(/\/$/, '') || '/index.html';
+const currentPath = location.pathname.endsWith('/')
+  ? location.pathname + 'index.html'
+  : location.pathname;
 
 refsMenu.menuLinks.forEach(link => {
   const href = link.getAttribute('href');
